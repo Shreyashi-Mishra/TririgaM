@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct DataModel {
+struct TMGenericDataModel {
     var imageData : UIImage
     var dataLabel : String
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class TMGenericCustomCell: UITableViewCell {
 
     @IBOutlet weak var customImageView: UIImageView!
     
@@ -20,7 +20,7 @@ class CustomTableViewCell: UITableViewCell {
        
     }
     
-    func setDataModel(dataM : DataModel){
+    func setDataModel(dataM : TMGenericDataModel){
         customImageView.image = dataM.imageData
         customLabel.text = dataM.dataLabel
      }

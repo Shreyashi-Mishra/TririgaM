@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct HeaderModel {
+struct TMHeaderCell {
     
     var textdata: String
 }

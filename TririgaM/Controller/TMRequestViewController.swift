@@ -8,25 +8,25 @@
 
 import UIKit
 
-class RequestViewController: UIViewController {
+class TMRequestViewController: UIViewController {
 
     @IBOutlet weak var createRequestTableVew: UITableView!
     
-    var headerData = [HeaderModel]()
+    var headerData = [TMHeaderCell]()
     override func viewDidLoad() {
         super.viewDidLoad()
         createRequestTableVew.tableFooterView = UIView()
         headerData = getHeaderDetails()
     }
     
-    func getHeaderDetails() -> [HeaderModel] {
+    func getHeaderDetails() -> [TMHeaderCell] {
         
-        let headerdetails = HeaderModel.init(textdata:"Documents")
+        let headerdetails = TMHeaderCell.init(textdata:"Documents")
         return [headerdetails]
     }
     
-    class func requestViewController() -> RequestViewController {
-         guard let requestDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "serviceVC") as? RequestViewController
+    class func requestViewController() -> TMRequestViewController {
+         guard let requestDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "serviceVC") as? TMRequestViewController
              else {
                  fatalError("Couldn't initialize contact detail View Controller")
          }
@@ -35,7 +35,7 @@ class RequestViewController: UIViewController {
 
 }
 
-extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
+extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
     
       func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -58,14 +58,14 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
       
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-        let label = UILabel()
-        label.text = "Service Request"
-        label.backgroundColor = UIColor.lightGray
-        label.textAlignment = .center
-        return label
+             let label = UILabel()
+             label.text = "Service Request"
+             label.backgroundColor = UIColor.lightGray
+             label.textAlignment = .center
+             return label
         }else
         {
-            let header = Bundle.main.loadNibNamed("AttachmentTableViewCell", owner: self, options: nil)?.first as? AttachmentTableViewCell
+            let header = Bundle.main.loadNibNamed("TMAttachmentCell", owner: self, options: nil)?.first as? TMAttachmentCell
             header?.backgroundColor = UIColor.lightGray
             header?.attachmentLabel.text = headerData[0].textdata
             return header
@@ -74,11 +74,11 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
         }
     
       func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-          return 400.0
+        return Constants.requestTableViewRowHeight
       }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return Constants.requestTableViewHeader
     }
 
 }

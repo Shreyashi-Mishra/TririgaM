@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttachmentTableViewCell: UITableViewCell {
+class TMAttachmentCell: UITableViewCell {
 
     
     @IBOutlet weak var attachmentLabel: UILabel!

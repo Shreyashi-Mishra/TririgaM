@@ -8,60 +8,58 @@
 
 import UIKit
 
-class PocViewController: UIViewController {
+class TMHomeViewController: UIViewController {
 
-    var dataModelArray = [DataModel]()
     
     @IBOutlet weak var tableView: UITableView!
+   
+    var dataModelArray = [TMGenericDataModel]()
+    
+    var serviceClass = TMServiceClass()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       headerSetUp()
+       dataModelArray = serviceClass.getDataDetails()
+        
+    }
+    
+    func headerSetUp() {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         tableView.tableFooterView = UIView()
         registerTableViewCell()
-        
-        dataModelArray = getDataDetails()
-        
     }
     
-    func getDataDetails() -> [DataModel] {
-        
-        guard let imageData = UIImage(named: "images") else { return []}
-        
-        let data = DataModel(imageD: imageData, dataD: "Maintenance services")
-        
-        return [data]
-    }
     
     func registerTableViewCell() {
           
-          let cellNib = UINib(nibName: "CustomTableViewCell", bundle: nil)
-          self.tableView.register(cellNib, forCellReuseIdentifier: "CustomTableViewCell")
+          let cellNib = UINib(nibName: "TMGenericCustomCell", bundle: nil)
+          self.tableView.register(cellNib, forCellReuseIdentifier: "GenericCustomCell")
       }
       
     
 }
 
-extension PocViewController: UITableViewDataSource, UITableViewDelegate {
+extension TMHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as? CustomTableViewCell
-//        cell?.customLabel.text =
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GenericCustomCell", for: indexPath) as? TMGenericCustomCell
         cell?.setDataModel(dataM: dataModelArray[indexPath.row])
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let taskDetailViewController = TaskViewController.taskDetailViewController()
+        let taskDetailViewController = TMTaskViewController.taskDetailViewController()
          navigationController?.pushViewController(taskDetailViewController, animated: true)
         
     }
   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        return Constants.dataTableViewRowHeight
     }
     
 
