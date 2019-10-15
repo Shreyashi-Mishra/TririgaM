@@ -1,21 +1,21 @@
 //
-//  AttachmentTableViewCell.swift
-//  Poc
+//  TMModalViewCell.swift
+//  TririgaM
 //
-//  Created by Shreyashi Mishra on 08/10/19.
+//  Created by Shreyashi Mishra on 10/10/19.
 //  Copyright © 2019 Quest. All rights reserved.
 //
 
 import UIKit
 
-class TMAttachmentCell: UITableViewCell {
+class TMModalViewCell: UITableViewCell {
 
-   //Mark: - IBOutlet
-    @IBOutlet weak var attachmentLabel: UILabel!
+    //Mark: - IBoutlets
+    @IBOutlet weak var modalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,5 +23,5 @@ class TMAttachmentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

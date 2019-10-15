@@ -10,7 +10,7 @@ import UIKit
 
 class TMHomeViewController: UIViewController {
 
-    
+//Mark:- IBOutlet
     @IBOutlet weak var tableView: UITableView!
    
     var dataModelArray = [TMGenericDataModel]()
@@ -21,10 +21,13 @@ class TMHomeViewController: UIViewController {
         super.viewDidLoad()
 
        headerSetUp()
-       dataModelArray = serviceClass.getDataDetails()
+       serviceClass.getDataDetails { (data) in
+           self.dataModelArray.append(contentsOf: data!)
+       }
         
     }
-    
+
+//Mark: - Header Setup
     func headerSetUp() {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
@@ -42,6 +45,8 @@ class TMHomeViewController: UIViewController {
     
 }
 
+//Mark: - TableView Delegates
+
 extension TMHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModelArray.count
@@ -52,6 +57,7 @@ extension TMHomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell?.setDataModel(dataM: dataModelArray[indexPath.row])
         return cell!
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskDetailViewController = TMTaskViewController.taskDetailViewController()
          navigationController?.pushViewController(taskDetailViewController, animated: true)

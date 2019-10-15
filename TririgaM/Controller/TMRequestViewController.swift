@@ -10,18 +10,33 @@ import UIKit
 
 class TMRequestViewController: UIViewController {
 
-    @IBOutlet weak var createRequestTableVew: UITableView!
     
+//Mark: IBOutlets
+    
+    @IBOutlet weak var createRequestTableVew: UITableView!
+   
     var headerData = [TMHeaderCell]()
+    var navtitle = ""
+   
+    var tag = 9
     override func viewDidLoad() {
         super.viewDidLoad()
-        createRequestTableVew.tableFooterView = UIView()
+        headerSetUP()
         headerData = getHeaderDetails()
+        
+        
     }
+//Mark: - Header Setup
+    
+    func headerSetUP() {
+        self.navigationItem.title = navtitle
+        createRequestTableVew.tableFooterView = UIView()
+    }
+    
     
     func getHeaderDetails() -> [TMHeaderCell] {
         
-        let headerdetails = TMHeaderCell.init(textdata:"Documents")
+        let headerdetails = TMHeaderCell.init(headerTextData:"Documents")
         return [headerdetails]
     }
     
@@ -32,8 +47,43 @@ class TMRequestViewController: UIViewController {
          }
          return requestDetailVC
      }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+              if segue.identifier == "requestedFor"{
+               let modalViewController = segue.destination as! TMModalViewController
+               modalViewController.modalDelegate = self as? TMModalDelegate
+              }
+       }
+    
+    
+//Mark: IBActions
+    
+    @IBAction func submitPressed(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Request Alert", message: "Request Submitted Successfully", preferredStyle: .alert)
 
+
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+        }
+
+        alertController.addAction(okAction)
+
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func cancelPressed(_ sender: UIButton) {
+         
+        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
 }
+
+//Mark: - TableView Delegates
 
 extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -47,8 +97,9 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-          let cell = createRequestTableVew.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            return cell
+           let cell = createRequestTableVew.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TMRequestTableViewCell
+           cell?.requestCellDelegate = self
+           return cell!
         } else {
             let dataCell =  createRequestTableVew.dequeueReusableCell(withIdentifier: "attachementCell", for: indexPath)
             return dataCell
@@ -67,22 +118,65 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
         {
             let header = Bundle.main.loadNibNamed("TMAttachmentCell", owner: self, options: nil)?.first as? TMAttachmentCell
             header?.backgroundColor = UIColor.lightGray
-            header?.attachmentLabel.text = headerData[0].textdata
+            header?.attachmentLabel.text = headerData[0].headerTextData
             return header
             }
 
         }
-    
-      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.requestTableViewRowHeight
+
+       func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+           
+           let footerView = UIView()
+           footerView.backgroundColor = UIColor.white
+           return footerView
       }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.requestTableViewHeader
+
+      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return Constants.requestTableViewRowHeight
+      }
+
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+           return Constants.requestTableViewHeader
+     }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+           return footerSectionHeight
     }
 
 }
 
+//Mark: - TMRequestTableViewCell Delegate
+extension TMRequestViewController : TMRequestCellDelegate {
+
+func textfieldButtonPressed(_ sender: UIButton) {
+       tag = sender.tag
+       performSegue(withIdentifier: "requestedFor", sender: sender)
+       print(sender.tag)
+   }
+
+}
 
 
+//Mark: - TMModalViewController Delegate
+extension TMRequestViewController: TMModalDelegate {
+    func loadModalData(message: String) {
+         let  requestCell = createRequestTableVew.cellForRow(at: IndexPath(row:0 , section:0)) as? TMRequestTableViewCell
+         
+        switch tag {
+        case 0:
+            requestCell?.requestedTextField.text = message
+        case 1:
+            requestCell?.buildingTextField.text = message
+        case 2:
+            requestCell?.floorTextField.text = message
+        case 3:
+            requestCell?.roomTextField.text = message
+        case 4:
+            requestCell?.requestedClassTextField.text = message
+        default:
+            break
+        }
+        
+    }
 
+}

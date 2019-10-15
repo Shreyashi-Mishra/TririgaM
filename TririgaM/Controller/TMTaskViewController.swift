@@ -10,6 +10,7 @@ import UIKit
 
 class TMTaskViewController: UIViewController {
 
+//Mark: - IBoutlets
     @IBOutlet weak var taskTableView: UITableView!
     
     var dataArray = [TMGenericDataModel]()
@@ -20,10 +21,13 @@ class TMTaskViewController: UIViewController {
 
         headerSetup()
         registerTableViewCell()
-        dataArray = serviceClass.getTaskDetails()
+        serviceClass.getTaskDetails(completion: { (data) in
+        self.dataArray.append(contentsOf: data!)
+        })
        
     }
-    
+
+//Mark: - Header setup
     func headerSetup() {
         
         self.navigationItem.title = "Task"
@@ -49,11 +53,20 @@ class TMTaskViewController: UIViewController {
           self.taskTableView.register(cellNib, forCellReuseIdentifier: "GenericCustomCell")
       }
       
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "requestController"{
+            let requestViewController = segue.destination as! TMRequestViewController
+            requestViewController.navtitle = dataArray[sender as! Int].genericDataLabel
+           }
+    }
 
 }
 
 
+//Mark: - Tableview Delegates
+
 extension TMTaskViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
@@ -63,14 +76,16 @@ extension TMTaskViewController: UITableViewDataSource, UITableViewDelegate {
         cell?.setDataModel(dataM: dataArray[indexPath.row])
         return cell!
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let requestDetailViewController = TMRequestViewController.requestViewController()
-         navigationController?.pushViewController(requestDetailViewController, animated: true)
+       
+         performSegue(withIdentifier: "requestController", sender: indexPath.row)
 
     }
+    
   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.taskTableViewRowHeight
+        return Constants.dataTableViewRowHeight
     }
     
     

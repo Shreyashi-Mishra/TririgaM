@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 struct TMGenericDataModel {
-    var imageData : UIImage
-    var dataLabel : String
+    var genericImageData : UIImage
+    var genericDataLabel : String
     
     init(imageD: UIImage, dataD: String) {
-        self.imageData = imageD
-        self.dataLabel = dataD
+        self.genericImageData = imageD
+        self.genericDataLabel = dataD
     }
 }

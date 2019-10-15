@@ -9,42 +9,88 @@
 import Foundation
 import UIKit
 
-class TMServiceClass: UIViewController {
+// Mark: - User Logins
+enum UserLogins: String  {
 
-    
-    func getDataDetails() -> [TMGenericDataModel] {
-        
-        guard let imageData = UIImage(named: "images") else { return []}
-        
-        let data = TMGenericDataModel(imageD: imageData, dataD: "Maintenance services")
-        
-        return [data]
-    }
- 
-    
-   func getTaskDetails() -> [TMGenericDataModel] {
-           
-        guard let imageData = UIImage(named: "images") else { return []}
-        var data = [TMGenericDataModel]()
-           
-        let data1 = TMGenericDataModel(imageD: imageData, dataD: "Create Service Requests")
-        let data2 = TMGenericDataModel(imageD: imageData, dataD: "Emergency Tasks")
-        let data3 = TMGenericDataModel(imageD: imageData, dataD: "Unassigned Work Tasks")
-        let data4 = TMGenericDataModel(imageD: imageData, dataD: "Corrective Work Tasks")
-        let data5 = TMGenericDataModel(imageD: imageData, dataD: "Preventive Work Tasks")
-        let data6 = TMGenericDataModel(imageD: imageData, dataD: "On Hold Work Task")
-        let data7 = TMGenericDataModel(imageD: imageData, dataD: "Completed Tasks")
-        
-        data.append(data1)
-        data.append(data2)
-        data.append(data3)
-        data.append(data4)
-        data.append(data5)
-        data.append(data6)
-        data.append(data7)
-        
-        return data
-       }
-    
+    case Coordinator
+    case Technician
+
 }
 
+
+//Mark: - Calls for Service
+
+class TMServiceClass: UIViewController {
+ 
+
+        
+    func getDataDetails (completion: @escaping(_ data : [TMGenericDataModel]?) -> Void) {
+    
+    
+        guard let imageData = UIImage(named: "images") else { return }
+        var data = [TMGenericDataModel]()
+        
+        let data1 = TMGenericDataModel(imageD: imageData, dataD: "Maintenance services")
+        
+        data.append(data1)
+        
+        completion(data)
+    }
+    
+    
+    
+        func getTaskDetails (completion: @escaping(_ data : [TMGenericDataModel]?) -> Void) {
+            
+            let loginUsers = UserLogins.Coordinator
+            
+            switch loginUsers {
+            
+            case .Coordinator:
+                guard let imageData = UIImage(named: "images") else { return}
+                var data = [TMGenericDataModel]()
+
+                 let data1 = TMGenericDataModel(imageD: imageData, dataD: "Create Service Requests")
+
+                 data.append(data1)
+                 completion(data)
+            
+            case .Technician:
+                guard let imageData = UIImage(named: "images") else { return}
+                var data = [TMGenericDataModel]()
+
+                let data1 = TMGenericDataModel(imageD: imageData, dataD: "Corrective Work Tasks")
+
+                data.append(data1)
+                completion(data)
+                
+
+            }
+                
+    }
+    
+    
+    func fetchJsonData (completion: @escaping (Result<[TMCreateRequestModel]?, Error>) ->()) {
+            let urlString = jsonURL
+            guard let urlData = URL(string: urlString) else { return }
+            
+            URLSession.shared.dataTask(with: urlData) { (data, resp, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                do {
+                let requestData = try JSONDecoder().decode([TMCreateRequestModel].self, from: data!)
+                completion(.success(requestData))
+
+                }catch let jsonError {
+                   
+                    completion(.failure(jsonError))
+
+                }
+                
+            
+            }.resume()
+        }
+    
+
+}

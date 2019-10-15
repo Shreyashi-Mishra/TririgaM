@@ -11,5 +11,5 @@ import UIKit
 
 struct TMHeaderCell {
     
-    var textdata: String
+    var headerTextData: String
 }

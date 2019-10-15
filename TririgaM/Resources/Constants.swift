@@ -17,3 +17,6 @@ enum Constants {
     static let dataTableViewRowHeight = CGFloat(120.0)
     
 }
+
+let jsonURL = "https://learnappmaking.com/ex/users.json"
+let footerSectionHeight = CGFloat(10.0)

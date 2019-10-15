@@ -10,6 +10,7 @@ import UIKit
 
 class TMGenericCustomCell: UITableViewCell {
 
+    //Mark: - IBOutlets
     @IBOutlet weak var customImageView: UIImageView!
     
     @IBOutlet weak var customLabel: UILabel!
@@ -21,8 +22,8 @@ class TMGenericCustomCell: UITableViewCell {
     }
     
     func setDataModel(dataM : TMGenericDataModel){
-        customImageView.image = dataM.imageData
-        customLabel.text = dataM.dataLabel
+        customImageView.image = dataM.genericImageData
+        customLabel.text = dataM.genericDataLabel
      }
  
     override func setSelected(_ selected: Bool, animated: Bool) {
