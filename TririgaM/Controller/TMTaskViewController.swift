@@ -80,8 +80,13 @@ extension TMTaskViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "requestController", sender: indexPath.row)
         
+        if dataArray[indexPath.row].genericDataLabel == "Corrective Work Tasks" {
+            performSegue(withIdentifier: "workTask", sender: indexPath.row)
+        }
+        else {
+            performSegue(withIdentifier: "requestController", sender: indexPath.row)
+        }
     }
     
     

@@ -249,7 +249,6 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
         attachmentModel.url = url
         attachmentModel.fileExtension = fileExtension
         attachmentModel.content = NSData(contentsOf: url) as Data?
-        
     }
     
 }

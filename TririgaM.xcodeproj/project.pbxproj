@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0825B229235875CC0008D40C /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B228235875CC0008D40C /* Designables.swift */; };
+		0825B22D235875E60008D40C /* TMWorkTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B22C235875E60008D40C /* TMWorkTaskViewModel.swift */; };
+		0825B23C235876010008D40C /* TMWorkTaskDocumentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B22E235875FF0008D40C /* TMWorkTaskDocumentCell.xib */; };
+		0825B23F235876010008D40C /* TMWorkTaskHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B231235875FF0008D40C /* TMWorkTaskHeaderCell.swift */; };
+		0825B240235876010008D40C /* TMWorkTaskDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B232235876000008D40C /* TMWorkTaskDocumentCell.swift */; };
+		0825B243235876010008D40C /* TMWorkTaskCommunicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B235235876000008D40C /* TMWorkTaskCommunicationCell.swift */; };
+		0825B248235876010008D40C /* TMWorkTaskHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B23A235876010008D40C /* TMWorkTaskHeaderCell.xib */; };
+		0825B249235876010008D40C /* TMWorkTaskCommunicationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B23B235876010008D40C /* TMWorkTaskCommunicationCell.xib */; };
+		0825B25023587AD00008D40C /* TMWorkTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B24F23587AD00008D40C /* TMWorkTaskViewController.swift */; };
+		0825B25223587DBD0008D40C /* TMWorkTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B25123587DBD0008D40C /* TMWorkTaskModel.swift */; };
+		0825B255235888670008D40C /* TMWorkTaskResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B253235888660008D40C /* TMWorkTaskResourceCell.xib */; };
+		0825B256235888670008D40C /* TMWorkTaskResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B254235888660008D40C /* TMWorkTaskResourceCell.swift */; };
+		0825B259235889DC0008D40C /* TMWorkTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B257235889DC0008D40C /* TMWorkTaskCell.swift */; };
+		0825B25A235889DC0008D40C /* TMWorkTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B258235889DC0008D40C /* TMWorkTaskCell.xib */; };
+		0825B25D23588C650008D40C /* TMWorkTaskTimeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B25B23588C650008D40C /* TMWorkTaskTimeEntryCell.swift */; };
+		0825B25E23588C650008D40C /* TMWorkTaskTimeEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B25C23588C650008D40C /* TMWorkTaskTimeEntryCell.xib */; };
+		0825B26123588F7B0008D40C /* TMWorkTaskSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B25F23588F7B0008D40C /* TMWorkTaskSubCell.swift */; };
+		0825B26223588F7B0008D40C /* TMWorkTaskSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0825B26023588F7B0008D40C /* TMWorkTaskSubCell.xib */; };
+		0825B266235894860008D40C /* TMServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825B265235894860008D40C /* TMServiceManager.swift */; };
 		3DC85012234214D70001B33B /* TMTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC85011234214D70001B33B /* TMTaskViewController.swift */; };
 		3DC8501623434C2A0001B33B /* TMRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8501523434C2A0001B33B /* TMRequestViewController.swift */; };
 		3DC8501A2345CDB00001B33B /* TMGenericCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC850182345CDB00001B33B /* TMGenericCustomCell.swift */; };
@@ -38,6 +57,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0825B228235875CC0008D40C /* Designables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Designables.swift; sourceTree = "<group>"; };
+		0825B22C235875E60008D40C /* TMWorkTaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskViewModel.swift; sourceTree = "<group>"; };
+		0825B22E235875FF0008D40C /* TMWorkTaskDocumentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskDocumentCell.xib; sourceTree = "<group>"; };
+		0825B231235875FF0008D40C /* TMWorkTaskHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskHeaderCell.swift; sourceTree = "<group>"; };
+		0825B232235876000008D40C /* TMWorkTaskDocumentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskDocumentCell.swift; sourceTree = "<group>"; };
+		0825B235235876000008D40C /* TMWorkTaskCommunicationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskCommunicationCell.swift; sourceTree = "<group>"; };
+		0825B23A235876010008D40C /* TMWorkTaskHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskHeaderCell.xib; sourceTree = "<group>"; };
+		0825B23B235876010008D40C /* TMWorkTaskCommunicationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskCommunicationCell.xib; sourceTree = "<group>"; };
+		0825B24F23587AD00008D40C /* TMWorkTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMWorkTaskViewController.swift; sourceTree = "<group>"; };
+		0825B25123587DBD0008D40C /* TMWorkTaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskModel.swift; sourceTree = "<group>"; };
+		0825B253235888660008D40C /* TMWorkTaskResourceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskResourceCell.xib; sourceTree = "<group>"; };
+		0825B254235888660008D40C /* TMWorkTaskResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskResourceCell.swift; sourceTree = "<group>"; };
+		0825B257235889DC0008D40C /* TMWorkTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskCell.swift; sourceTree = "<group>"; };
+		0825B258235889DC0008D40C /* TMWorkTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskCell.xib; sourceTree = "<group>"; };
+		0825B25B23588C650008D40C /* TMWorkTaskTimeEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskTimeEntryCell.swift; sourceTree = "<group>"; };
+		0825B25C23588C650008D40C /* TMWorkTaskTimeEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskTimeEntryCell.xib; sourceTree = "<group>"; };
+		0825B25F23588F7B0008D40C /* TMWorkTaskSubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWorkTaskSubCell.swift; sourceTree = "<group>"; };
+		0825B26023588F7B0008D40C /* TMWorkTaskSubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMWorkTaskSubCell.xib; sourceTree = "<group>"; };
+		0825B265235894860008D40C /* TMServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMServiceManager.swift; sourceTree = "<group>"; };
 		3DC85011234214D70001B33B /* TMTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMTaskViewController.swift; sourceTree = "<group>"; };
 		3DC8501523434C2A0001B33B /* TMRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMRequestViewController.swift; sourceTree = "<group>"; };
 		3DC850182345CDB00001B33B /* TMGenericCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMGenericCustomCell.swift; sourceTree = "<group>"; };
@@ -92,6 +130,20 @@
 				3DC85029234C88F70001B33B /* TMAttachmentCell.xib */,
 				3DC85036234F32100001B33B /* TMRequestTableViewCell.swift */,
 				3DC8503A234F571A0001B33B /* TMModalViewCell.swift */,
+				0825B235235876000008D40C /* TMWorkTaskCommunicationCell.swift */,
+				0825B23B235876010008D40C /* TMWorkTaskCommunicationCell.xib */,
+				0825B232235876000008D40C /* TMWorkTaskDocumentCell.swift */,
+				0825B22E235875FF0008D40C /* TMWorkTaskDocumentCell.xib */,
+				0825B254235888660008D40C /* TMWorkTaskResourceCell.swift */,
+				0825B253235888660008D40C /* TMWorkTaskResourceCell.xib */,
+				0825B257235889DC0008D40C /* TMWorkTaskCell.swift */,
+				0825B258235889DC0008D40C /* TMWorkTaskCell.xib */,
+				0825B25F23588F7B0008D40C /* TMWorkTaskSubCell.swift */,
+				0825B26023588F7B0008D40C /* TMWorkTaskSubCell.xib */,
+				0825B231235875FF0008D40C /* TMWorkTaskHeaderCell.swift */,
+				0825B23A235876010008D40C /* TMWorkTaskHeaderCell.xib */,
+				0825B25B23588C650008D40C /* TMWorkTaskTimeEntryCell.swift */,
+				0825B25C23588C650008D40C /* TMWorkTaskTimeEntryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,6 +151,8 @@
 		3DC8501E23473A540001B33B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0825B22C235875E60008D40C /* TMWorkTaskViewModel.swift */,
+				0825B25123587DBD0008D40C /* TMWorkTaskModel.swift */,
 				849E031C23584A6100344656 /* TMAttachmentModel.swift */,
 				3DC8501F23473A640001B33B /* TMGenericDataModel.swift */,
 				3DC8502C234C8A1C0001B33B /* TMHeaderCell.swift */,
@@ -110,6 +164,7 @@
 		3DC85026234C66DA0001B33B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0825B24F23587AD00008D40C /* TMWorkTaskViewController.swift */,
 				849E032C23584BD500344656 /* TMDetailViewController.swift */,
 				3DC85011234214D70001B33B /* TMTaskViewController.swift */,
 				3DE752282342024000ECA6F7 /* TMHomeViewController.swift */,
@@ -122,6 +177,7 @@
 		3DC8502E234E01000001B33B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0825B265235894860008D40C /* TMServiceManager.swift */,
 				849E032423584AAC00344656 /* ServiceClass.swift */,
 				3DC8502F234E01960001B33B /* TMServiceClass.swift */,
 			);
@@ -131,6 +187,7 @@
 		3DC85031234E08160001B33B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0825B228235875CC0008D40C /* Designables.swift */,
 				849E032A23584B9500344656 /* TMHelperClass.swift */,
 				849E032623584AB800344656 /* AttachmentHelper.swift */,
 				849E032723584AB900344656 /* AttachmentJSON.json */,
@@ -231,12 +288,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0825B25A235889DC0008D40C /* TMWorkTaskCell.xib in Resources */,
+				0825B26223588F7B0008D40C /* TMWorkTaskSubCell.xib in Resources */,
+				0825B23C235876010008D40C /* TMWorkTaskDocumentCell.xib in Resources */,
 				3DC8502B234C88F70001B33B /* TMAttachmentCell.xib in Resources */,
+				0825B255235888670008D40C /* TMWorkTaskResourceCell.xib in Resources */,
 				849E032323584A9300344656 /* TMAttachmentTableViewCell.xib in Resources */,
 				849E032923584AB900344656 /* AttachmentJSON.json in Resources */,
+				0825B25E23588C650008D40C /* TMWorkTaskTimeEntryCell.xib in Resources */,
 				3DE75221234201B300ECA6F7 /* LaunchScreen.storyboard in Resources */,
+				0825B248235876010008D40C /* TMWorkTaskHeaderCell.xib in Resources */,
 				3DE7521E234201B300ECA6F7 /* Assets.xcassets in Resources */,
 				3DC8501B2345CDB00001B33B /* TMGenericCustomCell.xib in Resources */,
+				0825B249235876010008D40C /* TMWorkTaskCommunicationCell.xib in Resources */,
 				3DE7521C234201B200ECA6F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,23 +315,35 @@
 				849E032823584AB900344656 /* AttachmentHelper.swift in Sources */,
 				849E032523584AAC00344656 /* ServiceClass.swift in Sources */,
 				3DC8502023473A640001B33B /* TMGenericDataModel.swift in Sources */,
+				0825B22D235875E60008D40C /* TMWorkTaskViewModel.swift in Sources */,
 				3DC8503B234F571A0001B33B /* TMModalViewCell.swift in Sources */,
+				0825B26123588F7B0008D40C /* TMWorkTaskSubCell.swift in Sources */,
+				0825B25023587AD00008D40C /* TMWorkTaskViewController.swift in Sources */,
+				0825B23F235876010008D40C /* TMWorkTaskHeaderCell.swift in Sources */,
 				3DC85033234E08680001B33B /* Constants.swift in Sources */,
 				3DC85030234E01960001B33B /* TMServiceClass.swift in Sources */,
+				0825B25D23588C650008D40C /* TMWorkTaskTimeEntryCell.swift in Sources */,
 				3DC8502D234C8A1C0001B33B /* TMHeaderCell.swift in Sources */,
 				3DC85037234F32100001B33B /* TMRequestTableViewCell.swift in Sources */,
 				849E032023584A7000344656 /* TMAttachmentTableViewCell.swift in Sources */,
 				3DE75215234201B200ECA6F7 /* AppDelegate.swift in Sources */,
 				3DE75217234201B200ECA6F7 /* SceneDelegate.swift in Sources */,
+				0825B266235894860008D40C /* TMServiceManager.swift in Sources */,
+				0825B256235888670008D40C /* TMWorkTaskResourceCell.swift in Sources */,
 				3DC8501A2345CDB00001B33B /* TMGenericCustomCell.swift in Sources */,
 				3DC8502A234C88F70001B33B /* TMAttachmentCell.swift in Sources */,
+				0825B229235875CC0008D40C /* Designables.swift in Sources */,
 				849E032B23584B9500344656 /* TMHelperClass.swift in Sources */,
+				0825B243235876010008D40C /* TMWorkTaskCommunicationCell.swift in Sources */,
+				0825B259235889DC0008D40C /* TMWorkTaskCell.swift in Sources */,
 				3DC85039234F4FD10001B33B /* TMModalViewController.swift in Sources */,
+				0825B240235876010008D40C /* TMWorkTaskDocumentCell.swift in Sources */,
 				3DC8501623434C2A0001B33B /* TMRequestViewController.swift in Sources */,
 				849E032D23584BD500344656 /* TMDetailViewController.swift in Sources */,
 				3DC85035234F2F030001B33B /* TMCreateRequestModel.swift in Sources */,
 				849E031D23584A6100344656 /* TMAttachmentModel.swift in Sources */,
 				3DC85012234214D70001B33B /* TMTaskViewController.swift in Sources */,
+				0825B25223587DBD0008D40C /* TMWorkTaskModel.swift in Sources */,
 				3DE752292342024000ECA6F7 /* TMHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
