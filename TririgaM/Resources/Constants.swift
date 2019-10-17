@@ -29,5 +29,5 @@ let accessRestrictedMessage = "Access to Photo / Camera restricted"
 let sourceUnavailableMessage = "This feature is not available"
 let sourceUnavailableTitle = "Source Unavailable"
 let fileRenameMessage = "Please enter attachment name:"
-let attachementSection = 1
+let attachmentSection = 1
 let fetchAttachment = true

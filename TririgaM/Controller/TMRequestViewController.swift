@@ -201,11 +201,14 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate, A
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if attachmentCollection.count > indexPath.row {
-            let model = attachmentCollection[indexPath.row]
-            attachment.presentAttachment(model)
-            
+        if indexPath.section == attachmentSection {
+            if attachmentCollection.count > indexPath.row {
+                let model = attachmentCollection[indexPath.row]
+                attachment.presentAttachment(model)
+                
+            }
         }
+        
     }
     
     // Mark : cell delegate function
