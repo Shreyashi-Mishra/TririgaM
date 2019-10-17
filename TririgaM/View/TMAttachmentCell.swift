@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol AttachmentHeaderCellDelegate: class {
+    func attachmentTapped()
+}
+
 class TMAttachmentCell: UITableViewCell {
 
    //Mark: - IBOutlet
     @IBOutlet weak var attachmentLabel: UILabel!
+    
+    weak var delegate: AttachmentHeaderCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +30,8 @@ class TMAttachmentCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func attachButtonTapped(_ sender: Any) {
+           delegate?.attachmentTapped()
+           
+       }
 }

@@ -517,6 +517,35 @@
             </objects>
             <point key="canvasLocation" x="131.65467625899282" y="138.69346733668343"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="O7A-2z-lkg">
+            <objects>
+                <viewController storyboardIdentifier="TMDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d61-bN-BPS" customClass="TMDetailViewController" customModule="TririgaM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yVs-De-PBv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEW-Fi-JG6">
+                                <rect key="frame" x="0.0" y="132" width="414" height="609"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="uv2-HU-uGT"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="hEW-Fi-JG6" id="vjm-mY-2SP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ij-Gs-pa1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4918.840579710145" y="138.61607142857142"/>
+        </scene>
     </scenes>
     <resources>
         <image name="dropdown__1232030" width="512" height="339"/>

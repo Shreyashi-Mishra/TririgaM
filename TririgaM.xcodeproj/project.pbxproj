@@ -27,6 +27,14 @@
 		3DE7521E234201B300ECA6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE7521D234201B300ECA6F7 /* Assets.xcassets */; };
 		3DE75221234201B300ECA6F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DE7521F234201B300ECA6F7 /* LaunchScreen.storyboard */; };
 		3DE752292342024000ECA6F7 /* TMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE752282342024000ECA6F7 /* TMHomeViewController.swift */; };
+		849E031D23584A6100344656 /* TMAttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E031C23584A6100344656 /* TMAttachmentModel.swift */; };
+		849E032023584A7000344656 /* TMAttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E031E23584A7000344656 /* TMAttachmentTableViewCell.swift */; };
+		849E032323584A9300344656 /* TMAttachmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E032223584A9300344656 /* TMAttachmentTableViewCell.xib */; };
+		849E032523584AAC00344656 /* ServiceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E032423584AAC00344656 /* ServiceClass.swift */; };
+		849E032823584AB900344656 /* AttachmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E032623584AB800344656 /* AttachmentHelper.swift */; };
+		849E032923584AB900344656 /* AttachmentJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 849E032723584AB900344656 /* AttachmentJSON.json */; };
+		849E032B23584B9500344656 /* TMHelperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E032A23584B9500344656 /* TMHelperClass.swift */; };
+		849E032D23584BD500344656 /* TMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E032C23584BD500344656 /* TMDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +60,14 @@
 		3DE75220234201B300ECA6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DE75222234201B300ECA6F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DE752282342024000ECA6F7 /* TMHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMHomeViewController.swift; sourceTree = "<group>"; };
+		849E031C23584A6100344656 /* TMAttachmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAttachmentModel.swift; sourceTree = "<group>"; };
+		849E031E23584A7000344656 /* TMAttachmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAttachmentTableViewCell.swift; sourceTree = "<group>"; };
+		849E032223584A9300344656 /* TMAttachmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMAttachmentTableViewCell.xib; sourceTree = "<group>"; };
+		849E032423584AAC00344656 /* ServiceClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceClass.swift; sourceTree = "<group>"; };
+		849E032623584AB800344656 /* AttachmentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentHelper.swift; sourceTree = "<group>"; };
+		849E032723584AB900344656 /* AttachmentJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AttachmentJSON.json; sourceTree = "<group>"; };
+		849E032A23584B9500344656 /* TMHelperClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHelperClass.swift; sourceTree = "<group>"; };
+		849E032C23584BD500344656 /* TMDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +84,8 @@
 		3DC850172345CD910001B33B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				849E032223584A9300344656 /* TMAttachmentTableViewCell.xib */,
+				849E031E23584A7000344656 /* TMAttachmentTableViewCell.swift */,
 				3DC850182345CDB00001B33B /* TMGenericCustomCell.swift */,
 				3DC850192345CDB00001B33B /* TMGenericCustomCell.xib */,
 				3DC85028234C88F70001B33B /* TMAttachmentCell.swift */,
@@ -81,6 +99,7 @@
 		3DC8501E23473A540001B33B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				849E031C23584A6100344656 /* TMAttachmentModel.swift */,
 				3DC8501F23473A640001B33B /* TMGenericDataModel.swift */,
 				3DC8502C234C8A1C0001B33B /* TMHeaderCell.swift */,
 				3DC85034234F2F030001B33B /* TMCreateRequestModel.swift */,
@@ -91,6 +110,7 @@
 		3DC85026234C66DA0001B33B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				849E032C23584BD500344656 /* TMDetailViewController.swift */,
 				3DC85011234214D70001B33B /* TMTaskViewController.swift */,
 				3DE752282342024000ECA6F7 /* TMHomeViewController.swift */,
 				3DC8501523434C2A0001B33B /* TMRequestViewController.swift */,
@@ -102,6 +122,7 @@
 		3DC8502E234E01000001B33B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				849E032423584AAC00344656 /* ServiceClass.swift */,
 				3DC8502F234E01960001B33B /* TMServiceClass.swift */,
 			);
 			path = Service;
@@ -110,6 +131,9 @@
 		3DC85031234E08160001B33B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				849E032A23584B9500344656 /* TMHelperClass.swift */,
+				849E032623584AB800344656 /* AttachmentHelper.swift */,
+				849E032723584AB900344656 /* AttachmentJSON.json */,
 				3DC85032234E08680001B33B /* Constants.swift */,
 			);
 			path = Resources;
@@ -208,6 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DC8502B234C88F70001B33B /* TMAttachmentCell.xib in Resources */,
+				849E032323584A9300344656 /* TMAttachmentTableViewCell.xib in Resources */,
+				849E032923584AB900344656 /* AttachmentJSON.json in Resources */,
 				3DE75221234201B300ECA6F7 /* LaunchScreen.storyboard in Resources */,
 				3DE7521E234201B300ECA6F7 /* Assets.xcassets in Resources */,
 				3DC8501B2345CDB00001B33B /* TMGenericCustomCell.xib in Resources */,
@@ -222,19 +248,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849E032823584AB900344656 /* AttachmentHelper.swift in Sources */,
+				849E032523584AAC00344656 /* ServiceClass.swift in Sources */,
 				3DC8502023473A640001B33B /* TMGenericDataModel.swift in Sources */,
 				3DC8503B234F571A0001B33B /* TMModalViewCell.swift in Sources */,
 				3DC85033234E08680001B33B /* Constants.swift in Sources */,
 				3DC85030234E01960001B33B /* TMServiceClass.swift in Sources */,
 				3DC8502D234C8A1C0001B33B /* TMHeaderCell.swift in Sources */,
 				3DC85037234F32100001B33B /* TMRequestTableViewCell.swift in Sources */,
+				849E032023584A7000344656 /* TMAttachmentTableViewCell.swift in Sources */,
 				3DE75215234201B200ECA6F7 /* AppDelegate.swift in Sources */,
 				3DE75217234201B200ECA6F7 /* SceneDelegate.swift in Sources */,
 				3DC8501A2345CDB00001B33B /* TMGenericCustomCell.swift in Sources */,
 				3DC8502A234C88F70001B33B /* TMAttachmentCell.swift in Sources */,
+				849E032B23584B9500344656 /* TMHelperClass.swift in Sources */,
 				3DC85039234F4FD10001B33B /* TMModalViewController.swift in Sources */,
 				3DC8501623434C2A0001B33B /* TMRequestViewController.swift in Sources */,
+				849E032D23584BD500344656 /* TMDetailViewController.swift in Sources */,
 				3DC85035234F2F030001B33B /* TMCreateRequestModel.swift in Sources */,
+				849E031D23584A6100344656 /* TMAttachmentModel.swift in Sources */,
 				3DC85012234214D70001B33B /* TMTaskViewController.swift in Sources */,
 				3DE752292342024000ECA6F7 /* TMHomeViewController.swift in Sources */,
 			);

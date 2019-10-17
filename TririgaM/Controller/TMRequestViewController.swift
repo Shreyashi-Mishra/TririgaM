@@ -14,8 +14,11 @@ class TMRequestViewController: UIViewController {
 //Mark: IBOutlets
     
     @IBOutlet weak var createRequestTableVew: UITableView!
-   
+    
+    let attachment = AttachmentHelper()
+    var attachmentCollection = [AttachmentModel]()
     var headerData = [TMHeaderCell]()
+    
     var navtitle = ""
    
     var tag = 9
@@ -24,7 +27,9 @@ class TMRequestViewController: UIViewController {
         headerSetUP()
         headerData = getHeaderDetails()
         
-        
+        registerTableViewCell()
+        attachment.delegate = self
+        fetchAttachments(fetchAttachment)
     }
     
 //Mark: - Header Setup
@@ -48,6 +53,43 @@ class TMRequestViewController: UIViewController {
          return requestDetailVC
      }
     
+    func registerTableViewCell() {
+    let nib = UINib(nibName: "TMAttachmentTableViewCell", bundle: nil)
+    createRequestTableVew.register(nib, forCellReuseIdentifier: "TMAttachmentTableViewCell")
+    }
+    
+    func fetchAttachments(_ isViewRequest : Bool) {
+            if isViewRequest {
+                let url = URL(string: testURL)!
+                let request = ServiceClass.init(url: url, httpMethod: .get)
+                request.prepareHTTPRequest(data: nil)
+                request.serviceRequest { (serviceResponse) in
+                    switch serviceResponse{
+                    case .success( _) :
+                        if let path = Bundle.main.path(forResource: "AttachmentJSON", ofType: "json") {
+                            do {
+                               let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                                let decoder = JSONDecoder()
+                                let attachmentreceived = try decoder.decode(Attachments.self, from: data)
+                                self.attachmentCollection = attachmentreceived.allAttachments
+                               
+                                DispatchQueue.main.async {
+                                    self.attachment.viewController = self
+                                    self.createRequestTableVew.reloadData()
+                                }
+                            } catch let error {
+                                print(error.localizedDescription)
+                            }
+                            
+                        }
+                        
+                    case .failure(let error) :
+                        UIAlertController.createAlert(title: "Error", message: error.rawValue, viewController: self)
+                        
+                    }
+                }
+            }
+        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
               if segue.identifier == "requestedFor"{
@@ -85,14 +127,18 @@ class TMRequestViewController: UIViewController {
 
 //Mark: - TableView Delegates
 
-extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
+extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate, AttachmentCellDelegate {
     
       func numberOfSections(in tableView: UITableView) -> Int {
         return 2
        }
     
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return 1
+          if section == 0 {
+              return 1
+          }else {
+              return attachmentCollection.count
+          }
       }
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,8 +147,13 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
            cell?.requestCellDelegate = self
            return cell!
         } else {
-            let dataCell =  createRequestTableVew.dequeueReusableCell(withIdentifier: "attachementCell", for: indexPath)
-            return dataCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TMAttachmentTableViewCell", for: indexPath) as! TMAttachmentTableViewCell
+            
+            cell.setViewDetails(attachmentCollection[indexPath.row])
+            cell.deleteButton.tag = indexPath.row
+            cell.cellDelegate = self
+            
+            return cell
         }
           
       }
@@ -119,6 +170,7 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
             let header = Bundle.main.loadNibNamed("TMAttachmentCell", owner: self, options: nil)?.first as? TMAttachmentCell
             header?.backgroundColor = UIColor.lightGray
             header?.attachmentLabel.text = headerData[0].headerTextData
+            header?.delegate = self
             return header
             }
 
@@ -132,7 +184,12 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
       }
 
       func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           return Constants.requestTableViewRowHeight
+           if indexPath.section == 0 {
+               return Constants.requestTableViewRowHeight
+           }
+           else {
+               return Constants.requestTableViewAttachmentRowHeight
+           }
       }
 
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -141,6 +198,23 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
            return footerSectionHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if attachmentCollection.count > indexPath.row {
+            let model = attachmentCollection[indexPath.row]
+            attachment.presentAttachment(model)
+            
+        }
+    }
+    
+    // Mark : cell delegate function
+    func deleteButton(cell : UITableViewCell) {
+        
+        if let deletionIndexPath = createRequestTableVew.indexPath(for: cell) {
+            attachmentCollection.remove(at: deletionIndexPath.row)
+            createRequestTableVew.deleteRows(at: [deletionIndexPath], with: .automatic)
+        }
     }
 
 }
@@ -191,4 +265,20 @@ extension TMRequestViewController: TMModalDelegate {
         
     }
 
+}
+
+
+extension TMRequestViewController: AttachmentHeaderCellDelegate{
+    func attachmentTapped(){
+        attachment.selectAttachmentTapped(viewController: self)
+    }
+}
+
+extension TMRequestViewController : AttachmentDelegate {
+    func updateAttachment(attachment: AttachmentModel) {
+        var addedAttachment = attachment
+        addedAttachment.delete_flag = false
+        self.attachmentCollection.append(addedAttachment)
+        self.createRequestTableVew.reloadData()
+    }
 }

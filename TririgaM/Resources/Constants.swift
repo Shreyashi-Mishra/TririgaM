@@ -15,8 +15,19 @@ enum Constants {
     static let requestTableViewHeader = CGFloat(50.0)
     static let requestTableViewRowHeight = CGFloat(400.0)
     static let dataTableViewRowHeight = CGFloat(120.0)
-    
+    static let requestTableViewAttachmentRowHeight = CGFloat(60.0)
+
 }
 
 let jsonURL = "https://learnappmaking.com/ex/users.json"
 let footerSectionHeight = CGFloat(10.0)
+
+
+let testURL = "https://learnappmaking.com/ex/users.json"
+let permissionMessage = "What source would you like to get attachment from? "
+let accessRestrictedMessage = "Access to Photo / Camera restricted"
+let sourceUnavailableMessage = "This feature is not available"
+let sourceUnavailableTitle = "Source Unavailable"
+let fileRenameMessage = "Please enter attachment name:"
+let attachementSection = 1
+let fetchAttachment = true

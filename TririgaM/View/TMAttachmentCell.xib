@@ -32,6 +32,9 @@
                         <state key="normal" title="Attach">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="attachButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l28-1u-xqL"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
