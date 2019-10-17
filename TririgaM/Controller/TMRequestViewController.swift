@@ -26,8 +26,8 @@ class TMRequestViewController: UIViewController {
         
         
     }
-//Mark: - Header Setup
     
+//Mark: - Header Setup
     func headerSetUP() {
         self.navigationItem.title = navtitle
         createRequestTableVew.tableFooterView = UIView()
@@ -168,10 +168,22 @@ extension TMRequestViewController: TMModalDelegate {
         case 1:
             requestCell?.buildingTextField.text = message
         case 2:
-            requestCell?.floorTextField.text = message
+            
+            if(requestCell?.buildingTextField.text == "") {
+                requestCell?.floorTextField.text = ""
+            } else {
+                requestCell?.floorTextField.text = message
+            }
+            
         case 3:
-            requestCell?.roomTextField.text = message
+
+            if(requestCell?.floorTextField.text == "") {
+                requestCell?.roomTextField.text = ""
+            }else {
+                requestCell?.roomTextField.text = message
+            }
         case 4:
+            
             requestCell?.requestedClassTextField.text = message
         default:
             break
