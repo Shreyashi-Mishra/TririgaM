@@ -9,25 +9,25 @@
 import UIKit
 
 class TMTaskViewController: UIViewController {
-
-//Mark: - IBoutlets
+    
+    //Mark: - IBoutlets
     @IBOutlet weak var taskTableView: UITableView!
     
     var dataArray = [TMGenericDataModel]()
     var serviceClass = TMServiceClass()
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         headerSetup()
         registerTableViewCell()
         serviceClass.getTaskDetails(completion: { (data) in
-        self.dataArray.append(contentsOf: data!)
+            self.dataArray.append(contentsOf: data!)
         })
-       
+        
     }
-
-//Mark: - Header setup
+    
+    //Mark: - Header setup
     func headerSetup() {
         
         self.navigationItem.title = "Task"
@@ -35,7 +35,7 @@ class TMTaskViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         self.navigationController?.navigationBar.tintColor = UIColor.red
         taskTableView.tableFooterView = UIView()
-
+        
     }
     
     
@@ -48,18 +48,18 @@ class TMTaskViewController: UIViewController {
     }
     
     func registerTableViewCell() {
-          
-          let cellNib = UINib(nibName: "TMGenericCustomCell", bundle: nil)
-          self.taskTableView.register(cellNib, forCellReuseIdentifier: "GenericCustomCell")
-      }
-      
+        
+        let cellNib = UINib(nibName: "TMGenericCustomCell", bundle: nil)
+        self.taskTableView.register(cellNib, forCellReuseIdentifier: "GenericCustomCell")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "requestController"{
+        if segue.identifier == "requestController"{
             let requestViewController = segue.destination as! TMRequestViewController
             requestViewController.navtitle = dataArray[sender as! Int].genericDataLabel
-           }
+        }
     }
-
+    
 }
 
 
@@ -74,19 +74,22 @@ extension TMTaskViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = taskTableView.dequeueReusableCell(withIdentifier: "GenericCustomCell", for: indexPath) as? TMGenericCustomCell
         cell?.setDataModel(dataM: dataArray[indexPath.row])
+        cell?.customImageView.circuler()
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-         performSegue(withIdentifier: "requestController", sender: indexPath.row)
-
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "requestController", sender: indexPath.row)
+        
     }
     
-  
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.dataTableViewRowHeight
     }
     
     
 }
+
+

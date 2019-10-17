@@ -9,7 +9,7 @@
 import UIKit
 
 class TMModalViewCell: UITableViewCell {
-
+    
     //Mark: - IBoutlets
     @IBOutlet weak var modalLabel: UILabel!
     
@@ -17,11 +17,11 @@ class TMModalViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

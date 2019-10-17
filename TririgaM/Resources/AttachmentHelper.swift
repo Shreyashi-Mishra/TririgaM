@@ -53,8 +53,8 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
         switch authorizationStatus {
         case .authorized : DispatchQueue.main.async{
             self.photoLibrary(self.pickerController)
-        }
-           
+            }
+            
         case .notDetermined, .denied : PHPhotoLibrary.requestAuthorization { (status) in
             guard status == .authorized else {return }
             DispatchQueue.main.async{
@@ -76,12 +76,12 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
         let authorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
         switch authorizationStatus {
         case .authorized : DispatchQueue.main.async{
-           self.openCamera(self.pickerController)
-        }
+            self.openCamera(self.pickerController)
+            }
         case .notDetermined, .denied : AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted) in
             if granted {
                 DispatchQueue.main.async{
-                   self.openCamera(self.pickerController)
+                    self.openCamera(self.pickerController)
                 }
             }})
         case .restricted :
@@ -117,7 +117,7 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
     
     //Attachment using Photo Library
     func photoLibrary(_ imagePickerController : UIImagePickerController) {
-
+        
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePickerController.sourceType = .photoLibrary
             imagePickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String, kUTTypeImage as String]
@@ -131,9 +131,9 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
     }
     
     func showRenameAlert(_ model : AttachmentModel) {
-    
+        
         var model = model
-    
+        
         let alertController = UIAlertController(title: "Attachment", message: fileRenameMessage, preferredStyle: .alert)
         alertController.addTextField { (textField) in
             
@@ -147,11 +147,11 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
             }
             self.saveAttachment(model : model)
             self.delegate?.updateAttachment(attachment: self.attachmentModel)
-         })
+        })
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (alert) in
             self.saveAttachment(model: model)
             self.delegate?.updateAttachment(attachment: self.attachmentModel)
-
+            
         }
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
@@ -200,7 +200,7 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
         return destinationFileURL
     }
     
-   func loadDataInView(filePath : URL) {
+    func loadDataInView(filePath : URL) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TMDetailViewController") as? TMDetailViewController{
             vc.filePath = filePath
             self.viewController?.navigationController?.pushViewController(vc, animated: true)
@@ -241,7 +241,7 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func createAttachmentModel(_ url : URL){
         let fileExtension = url.pathExtension
         let fileName = url.deletingPathExtension().lastPathComponent + HelperClass.getDateTime() + "." + fileExtension
@@ -249,7 +249,7 @@ class AttachmentHelper : NSObject,UIImagePickerControllerDelegate,UINavigationCo
         attachmentModel.url = url
         attachmentModel.fileExtension = fileExtension
         attachmentModel.content = NSData(contentsOf: url) as Data?
-
+        
     }
-
+    
 }

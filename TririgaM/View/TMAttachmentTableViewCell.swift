@@ -7,15 +7,15 @@
 //
 
 import UIKit
- 
+
 protocol AttachmentCellDelegate: class {
     func deleteButton(cell : UITableViewCell)
 }
 
 
 class TMAttachmentTableViewCell: UITableViewCell {
-
-   // var isCoordinator = true for hiding delete button
+    
+    // var isCoordinator = true for hiding delete button
     
     @IBOutlet weak var attachmentName: UILabel!
     
@@ -27,10 +27,10 @@ class TMAttachmentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

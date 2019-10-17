@@ -9,9 +9,9 @@
 import UIKit
 
 class TMRequestViewController: UIViewController {
-
     
-//Mark: IBOutlets
+    
+    //Mark: IBOutlets
     
     @IBOutlet weak var createRequestTableVew: UITableView!
     
@@ -20,7 +20,7 @@ class TMRequestViewController: UIViewController {
     var headerData = [TMHeaderCell]()
     
     var navtitle = ""
-   
+    
     var tag = 9
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class TMRequestViewController: UIViewController {
         fetchAttachments(fetchAttachment)
     }
     
-//Mark: - Header Setup
+    //Mark: - Header Setup
     func headerSetUP() {
         self.navigationItem.title = navtitle
         createRequestTableVew.tableFooterView = UIView()
@@ -46,78 +46,78 @@ class TMRequestViewController: UIViewController {
     }
     
     class func requestViewController() -> TMRequestViewController {
-         guard let requestDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "serviceVC") as? TMRequestViewController
-             else {
-                 fatalError("Couldn't initialize contact detail View Controller")
-         }
-         return requestDetailVC
-     }
+        guard let requestDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "serviceVC") as? TMRequestViewController
+            else {
+                fatalError("Couldn't initialize contact detail View Controller")
+        }
+        return requestDetailVC
+    }
     
     func registerTableViewCell() {
-    let nib = UINib(nibName: "TMAttachmentTableViewCell", bundle: nil)
-    createRequestTableVew.register(nib, forCellReuseIdentifier: "TMAttachmentTableViewCell")
+        let nib = UINib(nibName: "TMAttachmentTableViewCell", bundle: nil)
+        createRequestTableVew.register(nib, forCellReuseIdentifier: "TMAttachmentTableViewCell")
     }
     
     func fetchAttachments(_ isViewRequest : Bool) {
-            if isViewRequest {
-                let url = URL(string: testURL)!
-                let request = ServiceClass.init(url: url, httpMethod: .get)
-                request.prepareHTTPRequest(data: nil)
-                request.serviceRequest { (serviceResponse) in
-                    switch serviceResponse{
-                    case .success( _) :
-                        if let path = Bundle.main.path(forResource: "AttachmentJSON", ofType: "json") {
-                            do {
-                               let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                                let decoder = JSONDecoder()
-                                let attachmentreceived = try decoder.decode(Attachments.self, from: data)
-                                self.attachmentCollection = attachmentreceived.allAttachments
-                               
-                                DispatchQueue.main.async {
-                                    self.attachment.viewController = self
-                                    self.createRequestTableVew.reloadData()
-                                }
-                            } catch let error {
-                                print(error.localizedDescription)
-                            }
+        if isViewRequest {
+            let url = URL(string: testURL)!
+            let request = ServiceClass.init(url: url, httpMethod: .get)
+            request.prepareHTTPRequest(data: nil)
+            request.serviceRequest { (serviceResponse) in
+                switch serviceResponse{
+                case .success( _) :
+                    if let path = Bundle.main.path(forResource: "AttachmentJSON", ofType: "json") {
+                        do {
+                            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                            let decoder = JSONDecoder()
+                            let attachmentreceived = try decoder.decode(Attachments.self, from: data)
+                            self.attachmentCollection = attachmentreceived.allAttachments
                             
+                            DispatchQueue.main.async {
+                                self.attachment.viewController = self
+                                self.createRequestTableVew.reloadData()
+                            }
+                        } catch let error {
+                            print(error.localizedDescription)
                         }
                         
-                    case .failure(let error) :
-                        UIAlertController.createAlert(title: "Error", message: error.rawValue, viewController: self)
-                        
                     }
+                    
+                case .failure(let error) :
+                    UIAlertController.createAlert(title: "Error", message: error.rawValue, viewController: self)
+                    
                 }
             }
         }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-              if segue.identifier == "requestedFor"{
-               let modalViewController = segue.destination as! TMModalViewController
-               modalViewController.modalDelegate = self as? TMModalDelegate
-              }
-       }
+        if segue.identifier == "requestedFor"{
+            let modalViewController = segue.destination as! TMModalViewController
+            modalViewController.modalDelegate = self as? TMModalDelegate
+        }
+    }
     
     
-//Mark: IBActions
+    //Mark: IBActions
     
     @IBAction func submitPressed(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: "Request Alert", message: "Request Submitted Successfully", preferredStyle: .alert)
-
-
+        
+        
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
         }
-
+        
         alertController.addAction(okAction)
-
+        
         self.present(alertController, animated: true, completion: nil)
         
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
-         
+        
         dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
         
@@ -129,23 +129,23 @@ class TMRequestViewController: UIViewController {
 
 extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate, AttachmentCellDelegate {
     
-      func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
-       }
+    }
     
-      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          if section == 0 {
-              return 1
-          }else {
-              return attachmentCollection.count
-          }
-      }
-      
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }else {
+            return attachmentCollection.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-           let cell = createRequestTableVew.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TMRequestTableViewCell
-           cell?.requestCellDelegate = self
-           return cell!
+            let cell = createRequestTableVew.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TMRequestTableViewCell
+            cell?.requestCellDelegate = self
+            return cell!
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TMAttachmentTableViewCell", for: indexPath) as! TMAttachmentTableViewCell
             
@@ -155,16 +155,16 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate, A
             
             return cell
         }
-          
-      }
-      
-     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-             let label = UILabel()
-             label.text = "Service Request"
-             label.backgroundColor = UIColor.lightGray
-             label.textAlignment = .center
-             return label
+            let label = UILabel()
+            label.text = "Service Request"
+            label.backgroundColor = UIColor.lightGray
+            label.textAlignment = .center
+            return label
         }else
         {
             let header = Bundle.main.loadNibNamed("TMAttachmentCell", owner: self, options: nil)?.first as? TMAttachmentCell
@@ -172,32 +172,32 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate, A
             header?.attachmentLabel.text = headerData[0].headerTextData
             header?.delegate = self
             return header
-            }
-
         }
-
-       func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-           
-           let footerView = UIView()
-           footerView.backgroundColor = UIColor.white
-           return footerView
-      }
-
-      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           if indexPath.section == 0 {
-               return Constants.requestTableViewRowHeight
-           }
-           else {
-               return Constants.requestTableViewAttachmentRowHeight
-           }
-      }
-
-     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           return Constants.requestTableViewHeader
-     }
-
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.white
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return Constants.requestTableViewRowHeight
+        }
+        else {
+            return Constants.requestTableViewAttachmentRowHeight
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.requestTableViewHeader
+    }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-           return footerSectionHeight
+        return footerSectionHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -216,26 +216,26 @@ extension TMRequestViewController: UITableViewDataSource, UITableViewDelegate, A
             createRequestTableVew.deleteRows(at: [deletionIndexPath], with: .automatic)
         }
     }
-
+    
 }
 
 //Mark: - TMRequestTableViewCell Delegate
 extension TMRequestViewController : TMRequestCellDelegate {
-
-func textfieldButtonPressed(_ sender: UIButton) {
-       tag = sender.tag
-       performSegue(withIdentifier: "requestedFor", sender: sender)
-       print(sender.tag)
-   }
-
+    
+    func textfieldButtonPressed(_ sender: UIButton) {
+        tag = sender.tag
+        performSegue(withIdentifier: "requestedFor", sender: sender)
+        print(sender.tag)
+    }
+    
 }
 
 
 //Mark: - TMModalViewController Delegate
 extension TMRequestViewController: TMModalDelegate {
     func loadModalData(message: String) {
-         let  requestCell = createRequestTableVew.cellForRow(at: IndexPath(row:0 , section:0)) as? TMRequestTableViewCell
-         
+        let  requestCell = createRequestTableVew.cellForRow(at: IndexPath(row:0 , section:0)) as? TMRequestTableViewCell
+        
         switch tag {
         case 0:
             requestCell?.requestedTextField.text = message
@@ -250,7 +250,7 @@ extension TMRequestViewController: TMModalDelegate {
             }
             
         case 3:
-
+            
             if(requestCell?.floorTextField.text == "") {
                 requestCell?.roomTextField.text = ""
             }else {
@@ -264,7 +264,7 @@ extension TMRequestViewController: TMModalDelegate {
         }
         
     }
-
+    
 }
 
 

@@ -12,7 +12,7 @@ import WebKit
 
 
 class TMDetailViewController: UIViewController {
-
+    
     var filePath : URL?
     
     @IBOutlet weak var webView: WKWebView!
@@ -22,7 +22,7 @@ class TMDetailViewController: UIViewController {
         guard let url = filePath else {
             return
         }
-       
+        
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.loadFileURL(url, allowingReadAccessTo: url)

@@ -14,9 +14,9 @@ enum Constants {
     static let taskTableViewRowHeight = CGFloat(90.0)
     static let requestTableViewHeader = CGFloat(50.0)
     static let requestTableViewRowHeight = CGFloat(400.0)
-    static let dataTableViewRowHeight = CGFloat(120.0)
+    static let dataTableViewRowHeight = CGFloat(90.0)
     static let requestTableViewAttachmentRowHeight = CGFloat(60.0)
-
+    
 }
 
 let jsonURL = "https://learnappmaking.com/ex/users.json"

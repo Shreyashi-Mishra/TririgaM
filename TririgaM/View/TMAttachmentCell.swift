@@ -13,8 +13,8 @@ protocol AttachmentHeaderCellDelegate: class {
 }
 
 class TMAttachmentCell: UITableViewCell {
-
-   //Mark: - IBOutlet
+    
+    //Mark: - IBOutlet
     @IBOutlet weak var attachmentLabel: UILabel!
     
     weak var delegate: AttachmentHeaderCellDelegate?
@@ -23,15 +23,15 @@ class TMAttachmentCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     @IBAction func attachButtonTapped(_ sender: Any) {
-           delegate?.attachmentTapped()
-           
-       }
+        delegate?.attachmentTapped()
+        
+    }
 }

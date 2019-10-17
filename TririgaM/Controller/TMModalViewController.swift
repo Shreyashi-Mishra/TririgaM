@@ -15,7 +15,7 @@ protocol TMModalDelegate : NSObjectProtocol {
 }
 
 class TMModalViewController: UIViewController, UISearchControllerDelegate {
-
+    
     @IBOutlet weak var modalTableView: UITableView!
     @IBOutlet var modalView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -24,7 +24,7 @@ class TMModalViewController: UIViewController, UISearchControllerDelegate {
     weak var modalDelegate : TMModalDelegate?
     
     var arrayData =  [TMCreateRequestModel]()
-   
+    
     var searchArray = [TMCreateRequestModel]()
     var isSearching = false
     
@@ -36,12 +36,12 @@ class TMModalViewController: UIViewController, UISearchControllerDelegate {
         
         searchBar.delegate = self
         getServiceData()
-
-}
+        
+    }
     
-
- 
-//Mark: - Service Call
+    
+    
+    //Mark: - Service Call
     
     func getServiceData() {
         
@@ -52,18 +52,18 @@ class TMModalViewController: UIViewController, UISearchControllerDelegate {
                     print(dataLog.first_name)
                     self.arrayData.append(dataLog)
                 })
-                 DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     self.modalTableView.reloadData()
                 }
-
+                
             case .failure(let error):
-                print("Failed to Fetch Json Data")
-
+                print("Failed to Fetch Json Data \(error.localizedDescription)")
+                
             }
-
+            
         }
-
-    
+        
+        
     }
     
     class func modelDetailViewController() -> TMModalViewController {
@@ -74,8 +74,8 @@ class TMModalViewController: UIViewController, UISearchControllerDelegate {
         return modalDetailVC
     }
     
-//Mark: - IBActions
-
+    //Mark: - IBActions
+    
     @IBAction func closeTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -104,7 +104,7 @@ extension TMModalViewController : UITableViewDataSource, UITableViewDelegate {
         return cell!
     }
     
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if isSearching {
@@ -112,7 +112,7 @@ extension TMModalViewController : UITableViewDataSource, UITableViewDelegate {
         } else {
             modalDelegate?.loadModalData(message: arrayData[indexPath.row].first_name )
         }
-         self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -121,15 +121,15 @@ extension TMModalViewController : UITableViewDataSource, UITableViewDelegate {
 //Mark:- SearchBar Delegates
 extension TMModalViewController : UISearchBarDelegate {
     
-   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
-    searchArray = arrayData.filter({$0.first_name.prefix(searchText.count) == searchText})
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchArray = arrayData.filter({$0.first_name.prefix(searchText.count) == searchText})
         isSearching = true
         modalTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
+        
         isSearching = false
         searchBar.text = ""
         modalTableView.reloadData()

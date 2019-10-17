@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Attachments: Codable{
+struct Attachments: Codable
+{
     var resource,document: [AttachmentModel]
     var allAttachments : [AttachmentModel] {
         self.resource + self.document

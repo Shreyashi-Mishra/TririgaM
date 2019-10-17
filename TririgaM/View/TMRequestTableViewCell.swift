@@ -13,7 +13,7 @@ protocol TMRequestCellDelegate {
 }
 
 class TMRequestTableViewCell: UITableViewCell {
-
+    
     //Mark: IBOutlets
     @IBOutlet weak var requestedTextField: UITextField!
     @IBOutlet weak var buildingTextField: UITextField!
@@ -30,14 +30,14 @@ class TMRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var requestedClasslabel: UILabel!
     
     
-
+    
     @IBOutlet weak var requestedForlabel: UILabel!
     
     @IBOutlet weak var building: UILabel!
     
     @IBOutlet weak var floorLabel: UILabel!
     
-   
+    
     @IBOutlet weak var room: UILabel!
     
     
@@ -49,15 +49,15 @@ class TMRequestTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     @IBAction func requestedForTapped(_ sender: UIButton) {
-
+        
         requestCellDelegate?.textfieldButtonPressed(sender)
         
     }
@@ -65,31 +65,31 @@ class TMRequestTableViewCell: UITableViewCell {
     @IBAction func buildingTapped(_ sender: UIButton) {
         
         requestCellDelegate?.textfieldButtonPressed(sender)
-    
+        
     }
-
-
+    
+    
     @IBAction func floorTapped(_ sender: UIButton) {
-
+        
         requestCellDelegate?.textfieldButtonPressed(sender)
-
+        
     }
     
-
+    
     @IBAction func roomTapped(_ sender: UIButton) {
         
         requestCellDelegate?.textfieldButtonPressed(sender)
         
-
+        
     }
     
-
+    
     @IBAction func requestClassTapped(_ sender: UIButton) {
-
+        
         requestCellDelegate?.textfieldButtonPressed(sender)
-
+        
     }
-
+    
 }
 
 

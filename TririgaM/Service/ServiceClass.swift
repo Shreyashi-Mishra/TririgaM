@@ -27,7 +27,7 @@ final class ServiceClass {
     var request : URLRequest!
     
     init(url: URL, httpMethod: HTTPMethod) {
-//        let url = URL(string: url)!
+        //        let url = URL(string: url)!
         request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
     }
@@ -81,7 +81,7 @@ final class ServiceClass {
                 completion(.failure(.badRequest))
             default:
                 completion(.failure(.failed))
-
+                
             }
         }
         
@@ -92,7 +92,7 @@ final class ServiceClass {
     ///Prepare the request object
     func prepareHTTPRequest(data: Data?) {
         if let data = data {
-              self.setHTTPBody(data: data)
+            self.setHTTPBody(data: data)
         }
         self.setHTTPHeaders()
     }

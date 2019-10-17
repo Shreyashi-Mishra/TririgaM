@@ -39,3 +39,14 @@ enum Image {
 enum Video {
     case mov, mp4
 }
+
+
+extension UIImageView {
+    func circuler(){
+        self.contentMode = .scaleToFill
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+        self.layer.borderWidth = 2.0
+        self.layer.borderColor = UIColor.black.cgColor
+    }
+}

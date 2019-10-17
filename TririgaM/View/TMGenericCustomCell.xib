@@ -17,25 +17,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zk-B8-c3N">
-                        <rect key="frame" x="130" y="28.5" width="46.5" height="23"/>
+                        <rect key="frame" x="115" y="28.5" width="46.5" height="23"/>
                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Qr-ei-sl2">
-                        <rect key="frame" x="10" y="10" width="60" height="60"/>
+                        <rect key="frame" x="20" y="5" width="70" height="70"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="Zhk-5G-AHp"/>
-                            <constraint firstAttribute="height" priority="998" constant="60" id="flq-NL-Y2m"/>
+                            <constraint firstAttribute="width" constant="70" id="Zhk-5G-AHp"/>
+                            <constraint firstAttribute="height" constant="70" id="flq-NL-Y2m"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="6Zk-B8-c3N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Drg-GV-rRt"/>
-                    <constraint firstItem="6Zk-B8-c3N" firstAttribute="leading" secondItem="3Qr-ei-sl2" secondAttribute="trailing" constant="60" id="Rfz-Ed-zuQ"/>
-                    <constraint firstItem="3Qr-ei-sl2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="VdY-OD-xYo"/>
+                    <constraint firstItem="6Zk-B8-c3N" firstAttribute="leading" secondItem="3Qr-ei-sl2" secondAttribute="trailing" constant="25" id="Rfz-Ed-zuQ"/>
                     <constraint firstItem="3Qr-ei-sl2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="a5e-Xm-Jig"/>
-                    <constraint firstItem="3Qr-ei-sl2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="bGf-ZX-0U6"/>
+                    <constraint firstItem="3Qr-ei-sl2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bGf-ZX-0U6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
