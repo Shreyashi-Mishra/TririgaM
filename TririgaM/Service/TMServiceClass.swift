@@ -41,7 +41,7 @@ class TMServiceClass: UIViewController {
     
     func getTaskDetails (completion: @escaping(_ data : [TMGenericDataModel]?) -> Void) {
         
-        let loginUsers = UserLogins.Technician
+        let loginUsers = UserLogins.Coordinator
         
         switch loginUsers {
             

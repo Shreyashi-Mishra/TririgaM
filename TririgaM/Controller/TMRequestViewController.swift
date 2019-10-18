@@ -228,7 +228,6 @@ extension TMRequestViewController : TMRequestCellDelegate {
     func textfieldButtonPressed(_ sender: UIButton) {
         tag = sender.tag
         performSegue(withIdentifier: "requestedFor", sender: sender)
-        print(sender.tag)
     }
     
 }

@@ -90,6 +90,17 @@ class TMRequestTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func floorCloseTapped(_ sender: UIButton) {
+        
+        floorTextField.text = ""
+        roomTextField.text = ""
+    }
+    
+    
+    @IBAction func roomCloseTapped(_ sender: UIButton) {
+        
+        roomTextField.text = ""
+    }
 }
 
 

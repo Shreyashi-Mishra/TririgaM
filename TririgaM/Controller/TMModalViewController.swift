@@ -9,7 +9,6 @@
 import UIKit
 
 //Mark: - Delegate to load Service Request Details
-
 protocol TMModalDelegate : NSObjectProtocol {
     func loadModalData(message: String)
 }
@@ -49,7 +48,6 @@ class TMModalViewController: UIViewController, UISearchControllerDelegate {
             switch response {
             case .success(let requestData):
                 requestData?.forEach({ (dataLog) in
-                    print(dataLog.first_name)
                     self.arrayData.append(dataLog)
                 })
                 DispatchQueue.main.async {
@@ -75,7 +73,6 @@ class TMModalViewController: UIViewController, UISearchControllerDelegate {
     }
     
     //Mark: - IBActions
-    
     @IBAction func closeTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
